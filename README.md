@@ -1,3 +1,3 @@
-# Dollop
+# dollop
 
-Learning how to write custom allocators.
+Learning about custom memory allocators.
