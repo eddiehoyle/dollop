@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.5)
+project(dollop)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(DLP_LOGGING_ENABLED true)
+set(DLP_ASSERT_ENABLED true)
+
+set(DLP_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(DLP_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(DLP_EXTERNAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ext)
+
+include_directories(
+        ${DLP_INCLUDE_DIR})
+
+add_definitions(
+        -DDLP_LOGGING_ENABLED=${DLP_LOGGING_ENABLED}
+        -DDLP_ASSERT_ENABLED=${DLP_ASSERT_ENABLED}
+        -DDLP_SOURCE_DIR="${DLP_SOURCE_DIR}")
+
+add_subdirectory(${DLP_SOURCE_DIR})

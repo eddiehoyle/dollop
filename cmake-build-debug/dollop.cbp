@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="dollop"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\src\DApp\;CMake Files\src\DLib\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="portion">
+				<Option output="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/portion" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDLP_TARGET_NAME=&quot;portion&quot;"/>
+					<Add option="-DDLP_LOGGING_ENABLED=true"/>
+					<Add option="-DDLP_ASSERT_ENABLED=true"/>
+					<Add option="-DDLP_SOURCE_DIR=&quot;/Users/eddiehoyle/Code/cpp/dollop/src&quot;"/>
+					<Add directory="/Users/eddiehoyle/Code/cpp/dollop/src"/>
+					<Add directory="/Users/eddiehoyle/Code/cpp/dollop/src/DApp"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/Makefile&quot;  VERBOSE=1 portion"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="portion/fast">
+				<Option output="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/portion" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDLP_TARGET_NAME=&quot;portion&quot;"/>
+					<Add option="-DDLP_LOGGING_ENABLED=true"/>
+					<Add option="-DDLP_ASSERT_ENABLED=true"/>
+					<Add option="-DDLP_SOURCE_DIR=&quot;/Users/eddiehoyle/Code/cpp/dollop/src&quot;"/>
+					<Add directory="/Users/eddiehoyle/Code/cpp/dollop/src"/>
+					<Add directory="/Users/eddiehoyle/Code/cpp/dollop/src/DApp"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/Makefile&quot;  VERBOSE=1 portion/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dollop">
+				<Option output="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/libdollop.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCNC_TARGET_NAME=&quot;dollop&quot;"/>
+					<Add option="-DDLP_LOGGING_ENABLED=true"/>
+					<Add option="-DDLP_ASSERT_ENABLED=true"/>
+					<Add option="-DDLP_SOURCE_DIR=&quot;/Users/eddiehoyle/Code/cpp/dollop/src&quot;"/>
+					<Add directory="/Users/eddiehoyle/Code/cpp/dollop/src"/>
+					<Add directory="/Users/eddiehoyle/Code/cpp/dollop/src/DLib"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/Makefile&quot;  VERBOSE=1 dollop"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dollop/fast">
+				<Option output="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/libdollop.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCNC_TARGET_NAME=&quot;dollop&quot;"/>
+					<Add option="-DDLP_LOGGING_ENABLED=true"/>
+					<Add option="-DDLP_ASSERT_ENABLED=true"/>
+					<Add option="-DDLP_SOURCE_DIR=&quot;/Users/eddiehoyle/Code/cpp/dollop/src&quot;"/>
+					<Add directory="/Users/eddiehoyle/Code/cpp/dollop/src"/>
+					<Add directory="/Users/eddiehoyle/Code/cpp/dollop/src/DLib"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/Makefile&quot;  VERBOSE=1 dollop/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/eddiehoyle/Code/cpp/dollop/src/DApp/main.cc">
+			<Option target="portion"/>
+		</Unit>
+		<Unit filename="/Users/eddiehoyle/Code/cpp/dollop/src/DLib/memory.cc">
+			<Option target="dollop"/>
+		</Unit>
+		<Unit filename="/Users/eddiehoyle/Code/cpp/dollop/src/DLib/memory.hh">
+			<Option target="dollop"/>
+		</Unit>
+		<Unit filename="/Users/eddiehoyle/Code/cpp/dollop/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/eddiehoyle/Code/cpp/dollop/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/Users/eddiehoyle/Code/cpp/dollop/src/DApp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\DApp\"/>
+		</Unit>
+		<Unit filename="/Users/eddiehoyle/Code/cpp/dollop/src/DLib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\DLib\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

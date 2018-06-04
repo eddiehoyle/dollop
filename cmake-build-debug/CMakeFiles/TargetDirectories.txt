@@ -1,0 +1,10 @@
+/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/CMakeFiles/rebuild_cache.dir
+/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/CMakeFiles/edit_cache.dir
+/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/CMakeFiles/rebuild_cache.dir
+/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/CMakeFiles/edit_cache.dir
+/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DApp/CMakeFiles/portion.dir
+/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/CMakeFiles/rebuild_cache.dir
+/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/CMakeFiles/edit_cache.dir
+/Users/eddiehoyle/Code/cpp/dollop/cmake-build-debug/src/DLib/CMakeFiles/dollop.dir
