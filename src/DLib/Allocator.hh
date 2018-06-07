@@ -16,7 +16,7 @@ public:
     Allocator( std::size_t size, void *start );
     virtual ~Allocator();
 
-    virtual void *allocate( std::size_t size, std::size_t alignment = 4 ) = 0;
+    virtual void *allocate( std::size_t size, u8 alignment = 4 ) = 0;
     virtual void deallocate( void *ptr ) = 0;
     void *getStart() const { return m_start; }
     std::size_t getSize() const { return m_size; }
@@ -53,7 +53,7 @@ T *deallocateNew( Allocator& allocator, T& object ) {
 template< typename T >
 T *allocateArray( Allocator& allocator, std::size_t length ) {
     DLP_ASSERT( length > 0 );
-    std::size_t headerSize = sizeof( std::size_t ) / sizeof( T );
+    u8 headerSize = sizeof( std::size_t ) / sizeof( T );
     if ( sizeof( std::size_t ) % sizeof( T ) > 0 ) {
         headerSize += 1;
     }
@@ -77,7 +77,7 @@ void deallocateArray( Allocator& allocator, T *array ) {
     }
 
     // Calculate how much extra memory was allocated to store the length before the array
-    std::size_t headerSize = sizeof( std::size_t ) / sizeof( T );
+    u8 headerSize = sizeof( std::size_t ) / sizeof( T );
     if ( sizeof( std::size_t ) % sizeof( T ) > 0 ) {
         headerSize += 1;
     }
