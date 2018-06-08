@@ -11,6 +11,5 @@ add_library(${TARGET_NAME} SHARED
         ${PROJECT_HEADERS})
 target_include_directories(${TARGET_NAME} PRIVATE
         ${TARGET_INCLUDE_DIR})
-target_compile_definitions(${TARGET_NAME} PRIVATE
-        -DCNC_TARGET_NAME="${TARGET_NAME}")
+target_compile_definitions(${TARGET_NAME} PUBLIC)
 

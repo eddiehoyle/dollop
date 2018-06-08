@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
-project(dollop)
+project(dollop LANGUAGES CXX)
+
+set(DLP_VERSION_MAJOR 0)
+set(DLP_VERSION_MINOR 0)
+set(DLP_VERSION_PATCH 0)
+set(DLP_VERSION ${DLP_VERSION_MAJOR}.${DLP_VERSION_MINOR}.${DLP_VERSION_PATCH})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(DLP_LOGGING_ENABLED true)
@@ -17,4 +22,6 @@ add_definitions(
         -DDLP_ASSERT_ENABLED=${DLP_ASSERT_ENABLED}
         -DDLP_SOURCE_DIR="${DLP_SOURCE_DIR}")
 
-add_subdirectory(${DLP_SOURCE_DIR})
+add_subdirectory(ext)
+add_subdirectory(src)
+add_subdirectory(test)
