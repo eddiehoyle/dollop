@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(dollop LANGUAGES CXX)
 
 set(DLP_VERSION_MAJOR 0)

@@ -6,6 +6,7 @@ enable_testing()
 set(TEST_MAIN_SOURCE testMain.cc )
 set(TEST_ALL_SOURCES
         testAllocator.cc
+        testStackAllocator.cc
         testLinearAllocator.cc)
 add_executable(test_dollop
         ${TEST_MAIN_SOURCE}

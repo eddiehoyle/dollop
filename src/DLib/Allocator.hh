@@ -21,7 +21,7 @@ public:
     void *getStart() const { return m_start; }
     std::size_t getSize() const { return m_size; }
     std::size_t getUsedMemory() const { return m_usedMemory; }
-    std::size_t getNumAllocations() const { return m_numAllocations; }
+    std::size_t getCount() const { return m_numAllocations; }
 
 protected:
 
