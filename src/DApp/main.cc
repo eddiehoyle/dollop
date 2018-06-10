@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <DLib/LinearAllocator.hh>
+#include <DLib/FreeListAllocator.hh>
 #include <DLib/Math.hh>
 
 using namespace dollop;
@@ -19,21 +19,21 @@ int main( int argc, char **argv ) {
     void *memory = malloc( memory_size );
     DLP_ASSERT( memory != nullptr );
 
-    DLP_ERROR << "memory_size=" << memory_size << ", linear=" << sizeof( LinearAllocator );
-
-    LinearAllocator *allocator = new( memory )LinearAllocator( memory_size - sizeof( LinearAllocator ),
-                                                         pointer_math::add( memory, sizeof( LinearAllocator ) ) );
+    FreeListAllocator *allocator = new( memory )FreeListAllocator( memory_size - sizeof( FreeListAllocator ),
+                                                         pointer_math::add( memory, sizeof( FreeListAllocator ) ) );
     DLP_ASSERT( allocator != nullptr );
 
-    DLP_ERROR << allocator->head();
-    Mesh *mesh = createMesh( *allocator );
-    DLP_ASSERT( mesh != nullptr );
-    DLP_ERROR << (void*)mesh;
+    Mesh *meshA = createMesh( *allocator );
+    Mesh *meshB = createMesh( *allocator );
+    Mesh *meshC = createMesh( *allocator );
+    DLP_ASSERT( meshA != nullptr );
+    DLP_ASSERT( meshB != nullptr );
+    DLP_ASSERT( meshC != nullptr );
+    DLP_ERROR << (void*)meshA;
+    DLP_ERROR << (void*)meshB;
+    DLP_ERROR << (void*)meshC;
 
-    DLP_ERROR << allocator->head();
-    Mesh *mesh2 = createMesh( *allocator );
-    DLP_ASSERT( mesh2 != nullptr );
-    DLP_ERROR << (void*)mesh2;
+    free( memory );
 
     return 0;
 }

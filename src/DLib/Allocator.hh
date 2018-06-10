@@ -1,9 +1,9 @@
 #ifndef DOLLOP_ALLOCATOR_HH
 #define DOLLOP_ALLOCATOR_HH
 
-#include "Assert.hh"
-#include "Log.hh"
-#include "Platform.hh"
+#include "DLib/util/Assert.hh"
+#include "DLib/util/Log.hh"
+#include "DLib/util/Platform.hh"
 
 #include <cstddef>
 

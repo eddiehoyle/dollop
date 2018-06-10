@@ -17,9 +17,7 @@ StackAllocator::~StackAllocator() {
 
 void* StackAllocator::allocate( std::size_t size, u8 alignment ) {
     DLP_ASSERT( size > 0 );
-//    u8 adjustment = pointer_math::alignForwardAdjustmentWithHeader< AllocationHeader >( m_currentPos, alignment );
-    u8 adjustment = pointer_math::alignForwardAdjustmentWithHeader( m_currentPos, alignment,
-                                                                    sizeof( AllocationHeader ) );
+    u8 adjustment = pointer_math::alignForwardAdjustmentWithHeader< AllocationHeader >( m_currentPos, alignment );
     if ( m_usedMemory + adjustment + size > m_size ) {
         return nullptr;
     }

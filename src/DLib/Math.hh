@@ -1,7 +1,7 @@
 #ifndef DOLLOP_MATH_HH
 #define DOLLOP_MATH_HH
 
-#include "Platform.hh"
+#include "DLib/util/Platform.hh"
 
 namespace dollop {
 
@@ -12,7 +12,6 @@ inline void* add( void* address, std::size_t distance ) {
 }
 
 inline void* subtract( void* address, std::size_t distance ) {
-    DLP_ERROR << "distance=" << distance;
     return static_cast< void* >( reinterpret_cast< u8* >( address ) - distance );
 }
 
@@ -36,24 +35,6 @@ inline u8 alignForwardAdjustmentWithHeader( void* address, u8 alignment ) {
         alignment = alignof( T );
     }
     u8 adjustment = sizeof( T ) + alignForwardAdjustment( add( address, sizeof( T ) ), alignment );
-    return adjustment;
-}
-
-inline u8 alignForwardAdjustmentWithHeader(const void* address, u8 alignment, u8 headerSize)
-{
-    u8 adjustment = alignForwardAdjustment(address, alignment);
-    u8 neededSpace = headerSize;
-
-    if(adjustment < neededSpace)
-    {
-        neededSpace -= adjustment;
-
-        //Increase adjustment to fit header
-        adjustment += alignment * (neededSpace / alignment);
-
-        if(neededSpace % alignment > 0) adjustment += alignment;
-    }
-
     return adjustment;
 }
 
