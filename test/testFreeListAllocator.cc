@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <utility>
 
-#include <DLib/StackAllocator.hh>
+#include <DLib/FreeListAllocator.hh>
 #include <DLib/Math.hh>
 
 template< typename T >
@@ -14,15 +14,15 @@ struct Image {
     dollop::u32 height;
 };
 
-class TestStackAllocator : public ::testing::Test {
+class TestFreeListAllocator : public ::testing::Test {
 protected:
     virtual void SetUp() {
         m_size = 1024 * 1024;
         m_memory = malloc( m_size );
 
-        std::size_t size = m_size - sizeof( dollop::StackAllocator );
-        void* start = dollop::pointer_math::add( m_memory, sizeof( dollop::StackAllocator ) );
-        m_allocator = new( m_memory )dollop::StackAllocator( size, start );
+        std::size_t size = m_size - sizeof( dollop::FreeListAllocator );
+        void* start = dollop::pointer_math::add( m_memory, sizeof( dollop::FreeListAllocator ) );
+        m_allocator = new( m_memory )dollop::FreeListAllocator( size, start );
     }
 
     virtual void TearDown() {
@@ -34,17 +34,17 @@ protected:
 
     std::size_t m_size;
     void* m_memory;
-    dollop::StackAllocator* m_allocator;
+    dollop::FreeListAllocator* m_allocator;
 };
 
-TEST_F( TestStackAllocator, ctor ) {
+TEST_F( TestFreeListAllocator, ctor ) {
 
     using namespace dollop;
 
     EXPECT_TRUE( m_allocator != nullptr );
 }
 
-TEST_F( TestStackAllocator, empty_size ) {
+TEST_F( TestFreeListAllocator, empty_size ) {
 
     using namespace dollop;
 
@@ -52,48 +52,37 @@ TEST_F( TestStackAllocator, empty_size ) {
     EXPECT_EQ( m_allocator->getCount(), 0 );
 }
 
-TEST_F( TestStackAllocator, empty_top ) {
 
-    using namespace dollop;
-
-    EXPECT_TRUE( m_allocator != nullptr );
-    EXPECT_TRUE( m_allocator->top() == nullptr );
-}
-
-TEST_F( TestStackAllocator, allocate_one ) {
+TEST_F( TestFreeListAllocator, allocate_one ) {
 
     using namespace dollop;
 
     Image* image = create< Image >( *m_allocator );
     EXPECT_TRUE( image != nullptr );
-    EXPECT_EQ( image, m_allocator->top() );
     EXPECT_EQ( m_allocator->getCount(), 1 );
 }
 
-TEST_F( TestStackAllocator, allocate_many ) {
+TEST_F( TestFreeListAllocator, allocate_many ) {
 
     using namespace dollop;
 
     Image* imageA = create< Image >( *m_allocator );
     EXPECT_TRUE( imageA != nullptr );
-    EXPECT_EQ( imageA, m_allocator->top() );
     EXPECT_EQ( m_allocator->getCount(), 1 );
 
     Image* imageB = create< Image >( *m_allocator );
     EXPECT_TRUE( imageB != nullptr );
     EXPECT_TRUE( imageB != imageA );
-    EXPECT_EQ( imageB, m_allocator->top() );
     EXPECT_EQ( m_allocator->getCount(), 2 );
 
     Image* imageC = create< Image >( *m_allocator );
     EXPECT_TRUE( imageC != nullptr );
     EXPECT_TRUE( imageC != imageB );
     EXPECT_TRUE( imageC != imageA );
-    EXPECT_EQ( imageC, m_allocator->top() );
     EXPECT_EQ( m_allocator->getCount(), 3 );
 }
 
-TEST_F( TestStackAllocator, deallocate ) {
+TEST_F( TestFreeListAllocator, deallocate ) {
 
     using namespace dollop;
 

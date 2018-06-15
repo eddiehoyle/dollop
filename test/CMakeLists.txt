@@ -7,6 +7,7 @@ set(TEST_MAIN_SOURCE testMain.cc )
 set(TEST_ALL_SOURCES
         testAllocator.cc
         testStackAllocator.cc
+        testFreeListAllocator.cc
         testLinearAllocator.cc)
 add_executable(test_dollop
         ${TEST_MAIN_SOURCE}

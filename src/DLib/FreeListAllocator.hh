@@ -5,6 +5,12 @@
 
 namespace dollop {
 
+
+/// The FreeList allocator allows allocations of any size to be made
+/// (inside the available memory) and deallocations in any order.
+/// A linked-list of free blocks of memory is maintained (each free
+/// block contains information about its size and a pointer to the
+/// next free block).
 class FreeListAllocator : public Allocator {
 
 public:
