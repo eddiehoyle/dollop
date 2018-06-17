@@ -27,13 +27,11 @@ void* FreeListAllocator::allocate( std::size_t size, u8 alignment ) {
     FreeBlock* freeBlock = m_freeBlocks;
 
     // Loop through all linked free blocks
-    while( freeBlock != nullptr ) {
+    while ( freeBlock != nullptr ) {
 
         // Size of header + data
         u8 adjustment = pointer_math::alignForwardAdjustmentWithHeader< AllocationHeader >( freeBlock, alignment );
         std::size_t totalSize = size + adjustment;
-
-//        DLP_ERROR << "freeblock size=" << freeBlock->size << ", totalSize=" << totalSize;
 
         // If allocation doesn't fit in this FreeBlock, try the next
         if ( freeBlock->size < totalSize ) {
@@ -44,7 +42,7 @@ void* FreeListAllocator::allocate( std::size_t size, u8 alignment ) {
 
         DLP_ASSERT( sizeof( AllocationHeader ) >= sizeof( FreeBlock ) );
 
-        if ( freeBlock->size - totalSize  <= sizeof( AllocationHeader ) ){
+        if ( freeBlock->size - totalSize <= sizeof( AllocationHeader ) ) {
 
             // Increase allocation size instead of creating a new FreeBlock
             totalSize = freeBlock->size;
@@ -77,9 +75,9 @@ void* FreeListAllocator::allocate( std::size_t size, u8 alignment ) {
         m_usedMemory += totalSize;
         m_numAllocations++;
 
-        DLP_ASSERT( pointer_math::alignForwardAdjustment( (void*)alignedAddress, alignment) == 0 );
+        DLP_ASSERT( pointer_math::alignForwardAdjustment( ( void* )alignedAddress, alignment ) == 0 );
 
-        return (void*)alignedAddress;
+        return ( void* )alignedAddress;
     }
 
     DLP_ASSERT( false && "Couldn't find free block large enough!" );
@@ -87,46 +85,62 @@ void* FreeListAllocator::allocate( std::size_t size, u8 alignment ) {
 }
 
 void FreeListAllocator::deallocate( void* ptr ) {
+
     DLP_ASSERT( ptr != nullptr );
-    AllocationHeader* header = reinterpret_cast< AllocationHeader* >( pointer_math::subtract( ptr, sizeof( AllocationHeader ) ) );
-    uptr block_start = reinterpret_cast< uptr >( ptr ) - header->adjustment;
-    std::size_t block_size = header->size;
-    uptr block_end = block_start + block_size;
+
+    AllocationHeader* header = static_cast< AllocationHeader* >( pointer_math::subtract( ptr, sizeof( AllocationHeader ) ) );
+    uptr blockStart = reinterpret_cast< uptr >( ptr ) - header->adjustment;
+    size_t blockSize = header->size;
+    uptr blockEnd = blockStart + blockSize;
 
     FreeBlock* previousFreeBlock = nullptr;
     FreeBlock* freeBlock = m_freeBlocks;
 
     while ( freeBlock != nullptr ) {
-        if ( reinterpret_cast< uptr >( freeBlock ) >= block_end ) {
+
+        if ( reinterpret_cast< uptr >( freeBlock ) >= blockEnd ) {
             break;
         }
+
         previousFreeBlock = freeBlock;
         freeBlock = freeBlock->next;
     }
 
     if ( previousFreeBlock == nullptr ) {
-        previousFreeBlock = reinterpret_cast< FreeBlock* >( block_start );
-        previousFreeBlock->size = block_size;
-        previousFreeBlock->next = m_freeBlocks; // ???
-        m_freeBlocks = previousFreeBlock; // ???
-    } else if ( reinterpret_cast< uptr >( previousFreeBlock ) + previousFreeBlock->size == block_start ) {
-        previousFreeBlock->size += block_size;
+
+        previousFreeBlock = reinterpret_cast< FreeBlock* >( blockStart );
+        previousFreeBlock->size = blockSize;
+        previousFreeBlock->next = m_freeBlocks;
+        m_freeBlocks = previousFreeBlock;
+
+    } else if ( reinterpret_cast< uptr >( previousFreeBlock ) + previousFreeBlock->size == blockStart ) {
+
+        previousFreeBlock->size += blockSize;
+
     } else {
-        FreeBlock* temp = reinterpret_cast< FreeBlock* >( block_start );
-        temp->size = block_size;
+
+        FreeBlock* temp = reinterpret_cast< FreeBlock* >( blockStart );
+        temp->size = blockSize;
         temp->next = previousFreeBlock->next;
         previousFreeBlock->next = temp;
         previousFreeBlock = temp;
     }
 
     // TODO: Crashes here
-    if ( freeBlock != nullptr && reinterpret_cast< uptr >( freeBlock ) == block_end ) {
-        previousFreeBlock += freeBlock->size;
+    if ( freeBlock != nullptr && reinterpret_cast< uptr >( freeBlock ) == blockEnd ) {
+        previousFreeBlock->size += freeBlock->size;
         previousFreeBlock->next = freeBlock->next;
     }
 
+//    DLP_ASSERT( previousFreeBlock != nullptr );
+
+//    if ( reinterpret_cast< uptr >( previousFreeBlock ) + previousFreeBlock->size == reinterpret_cast< uptr >( freeBlock ) ) {
+//        previousFreeBlock->size += freeBlock->size;
+//        previousFreeBlock->next = freeBlock->next;
+//    }
+
     m_numAllocations--;
-    m_usedMemory -= block_size;
+    m_usedMemory -= blockSize;
 }
 
 }

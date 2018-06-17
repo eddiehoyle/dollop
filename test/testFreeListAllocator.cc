@@ -86,8 +86,16 @@ TEST_F( TestFreeListAllocator, deallocate ) {
 
     using namespace dollop;
 
+    std::size_t used = m_allocator->getUsedMemory();
+
     Image* imageA = create< Image >( *m_allocator );
     EXPECT_TRUE( imageA != nullptr );
+    EXPECT_NE( m_allocator->getUsedMemory(), used );
+
     m_allocator->deallocate( imageA );
+    EXPECT_EQ( m_allocator->getCount(), 0 );
+    EXPECT_EQ( m_allocator->getUsedMemory(), used );
+
+
 
 }
