@@ -3,18 +3,26 @@
 
 namespace dollop {
 
-template< typename T >
-PoolAllocator< T >::PoolAllocator( std::size_t size, void* start )
+
+PoolAllocator::PoolAllocator( std::size_t objectSize, u8 objectAlignment,
+                              std::size_t size, void* start )
         : Allocator( size, start ),
-          m_objectSize( sizeof( T ) ),
-          m_objectAlignment( alignof( T ) ) {
+          m_objectSize( objectSize ),
+          m_objectAlignment( objectAlignment ) {
 
     DLP_ASSERT( m_objectSize >= sizeof( void* ) );
+
+    // Align memory
     u8 adjustment = pointer_math::alignForwardAdjustment( start, m_objectAlignment );
     m_freeList = static_cast< void** >( pointer_math::add( start, adjustment ) );
+
+    // Amount of objects we can fit in our pool
     std::size_t numObjects = ( size - adjustment ) / m_objectSize;
+
+    // Get pointer to memory start
     void** ptr = m_freeList;
 
+    // I... don't understand what this is doing.
     for ( std::size_t i = 0; i < numObjects - 1; ++i ) {
         *ptr = pointer_math::add( ptr, m_objectSize );
         ptr = static_cast< void** >( *ptr );
@@ -23,19 +31,34 @@ PoolAllocator< T >::PoolAllocator( std::size_t size, void* start )
     *ptr = nullptr;
 }
 
-template< typename T >
-PoolAllocator< T >::~PoolAllocator() {
 
+PoolAllocator::~PoolAllocator() {
+    m_freeList = nullptr;
 }
 
-template< typename T >
-void* PoolAllocator< T >::allocate( std::size_t size, u8 alignment ) {
-    return nullptr;
+void* PoolAllocator::allocate( std::size_t size, u8 alignment ) {
+
+    DLP_ASSERT( size == m_objectSize && alignment == m_objectAlignment );
+
+    if ( m_freeList == nullptr ) {
+        return nullptr;
+    }
+
+    void* ptr = m_freeList;
+    m_freeList = static_cast< void** >( *m_freeList );
+
+    m_usedMemory += size;
+    m_numAllocations++;
+
+    return ptr;
 }
 
-template< typename T >
-void PoolAllocator< T >::deallocate( void* ptr ) {
 
+void PoolAllocator::deallocate( void* ptr ) {
+    *( static_cast< void** >( ptr ) ) = m_freeList;
+    m_freeList = static_cast< void** >( ptr );
+    m_usedMemory -= m_objectSize;
+    m_numAllocations--;
 }
 
 }
