@@ -8,6 +8,8 @@ set(TEST_ALL_SOURCES
         testAllocator.cc
         testStackAllocator.cc
         testFreeListAllocator.cc
+        testPoolAllocator.cc
+        testProxyAllocator.cc
         testLinearAllocator.cc)
 add_executable(test_dollop
         ${TEST_MAIN_SOURCE}
