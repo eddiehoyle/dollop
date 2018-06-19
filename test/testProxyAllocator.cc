@@ -31,9 +31,12 @@ protected:
         m_size = 1024 * 1024;
         m_memory = malloc( m_size );
 
+        // Create FreeListAllocator
         std::size_t size = m_size - sizeof( dollop::FreeListAllocator );
         void* allocatorBlock = dollop::pointer_math::add( m_memory, sizeof( dollop::FreeListAllocator ) );
         dollop::FreeListAllocator* allocator = new( m_memory )dollop::FreeListAllocator( size, allocatorBlock );
+
+        // Wrap FreeListAllocator in Proxy
         void* proxyBlock = allocator->allocate( sizeof( dollop::ProxyAllocator ), alignof( dollop::ProxyAllocator ) );
         m_allocator = new( proxyBlock )dollop::ProxyAllocator( *allocator );
     }
